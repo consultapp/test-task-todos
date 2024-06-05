@@ -24,7 +24,7 @@ export default function TodoInput() {
       <input
         ref={input}
         className="grow"
-        placeholder="What do you need to do?"
+        placeholder="What needs to be done?"
         onKeyDown={enterHandle}
       />
     </div>
