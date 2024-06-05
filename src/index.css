@@ -10,3 +10,31 @@
 body {
   margin: 0;
 }
+
+.done {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  opacity: 50%;
+  @apply border-stone-700;
+}
+
+.line {
+  @apply flex flex-row items-center gap-2 text-2xl font-thin border-t p-4 last:border-b;
+}
+
+.iconBtn {
+  @apply opacity-50 hover:opacity-100 active:opacity-100;
+}
+
+.btn {
+  @apply opacity-50 hover:opacity-100 active:opacity-100 border-stone-300  p-1;
+}
+
+.btn-checked {
+  @apply border rounded border-stone-400;
+}

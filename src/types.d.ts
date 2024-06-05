@@ -1,12 +1,14 @@
-import { FILTERS } from "@/fixtures/FILTERS";
+import FILTERS from "@/fixtures/FILTERS";
+
+export type TFilter = keyof typeof FILTERS;
 
 export interface ITodo {
   id: number;
   text: string;
-  done: boolean;
+  done: TFilter;
 }
 
 export interface ITodoContext {
   todos: ITodo[];
-  filter: keyof typeof FILTERS;
+  filter: TFilter;
 }

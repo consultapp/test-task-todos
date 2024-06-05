@@ -1,9 +1,13 @@
-import { FILTERS } from "@/fixtures/FILTERS";
+import FILTERS from "@/fixtures/FILTERS";
 import { ITodo, ITodoContext } from "@/types";
 import { createContext, useCallback, useContext } from "react";
 
 export const initialTodoContext: ITodoContext = {
-  todos: [],
+  todos: [
+    { id: 1, text: "Тестовое задание", done: FILTERS.active },
+    { id: 2, text: "Прекрасный код", done: FILTERS.completed },
+    { id: 3, text: "Покрытие тестами", done: FILTERS.active },
+  ],
   filter: FILTERS.all,
 };
 
@@ -25,10 +29,18 @@ export function useFilter() {
   return useContext(TodoContext).filter;
 }
 
+export function useFilteredTodos() {
+  const todos = useTodos();
+  const filter = useFilter();
+  if (filter === FILTERS.all) return todos;
+
+  return todos.filter(({ done }) => done === filter);
+}
+
 export function useAddTodo() {
   const dispatch = useContext(TodoContextDispatch);
   return useCallback(
-    (text: ITodo["text"]) => {
+    ({ text }: { text: ITodo["text"] }) => {
       dispatch({ type: "addTodo", payload: { text } });
     },
     [dispatch]
@@ -38,7 +50,7 @@ export function useAddTodo() {
 export function useDeleteTodo() {
   const dispatch = useContext(TodoContextDispatch);
   return useCallback(
-    (id: ITodo["id"]) => {
+    ({ id }: { id: ITodo["id"] }) => {
       dispatch({ type: "deleteTodo", payload: { id } });
     },
     [dispatch]
@@ -49,7 +61,24 @@ export function useUpdateTodo() {
   const dispatch = useContext(TodoContextDispatch);
   return useCallback(
     (todo: ITodo) => {
-      dispatch({ type: "deleteTodo", payload: todo });
+      dispatch({ type: "updateTodo", payload: todo });
+    },
+    [dispatch]
+  );
+}
+
+export function useClearCompleted() {
+  const dispatch = useContext(TodoContextDispatch);
+  return useCallback(() => {
+    dispatch({ type: "clearCompleted", payload: {} });
+  }, [dispatch]);
+}
+
+export function useSetFilter() {
+  const dispatch = useContext(TodoContextDispatch);
+  return useCallback(
+    (filter: keyof typeof FILTERS) => {
+      dispatch({ type: "setFilter", payload: filter });
     },
     [dispatch]
   );
