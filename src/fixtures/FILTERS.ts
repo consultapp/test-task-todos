@@ -1,5 +1,5 @@
 export const FILTERS = {
   all: "all",
-  notDone: "notDone",
-  done: "done",
+  active: "active",
+  completed: "completed",
 } as const;
