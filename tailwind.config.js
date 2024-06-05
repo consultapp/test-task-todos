@@ -6,6 +6,10 @@ export default {
       width: {
         W1: "500px",
       },
+      scaleX: {
+        W1: "98%",
+        W2: "96%",
+      },
     },
   },
   plugins: [],
