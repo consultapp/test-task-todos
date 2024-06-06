@@ -8,5 +8,9 @@ export default function ItemsLeft() {
     return acc;
   }, 0);
 
-  return <div>{itemsLeft ? `${itemsLeft} items left` : "all done"}</div>;
+  return (
+    <div className="itemsLeft">
+      {itemsLeft ? `${itemsLeft} items left` : "all done"}
+    </div>
+  );
 }
