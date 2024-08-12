@@ -9,6 +9,7 @@
 
 body {
   margin: 0;
+  @apply bg-zinc-200;
 }
 
 .done {
