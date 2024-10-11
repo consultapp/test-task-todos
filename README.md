@@ -1,4 +1,4 @@
-#Todos
+# Todos
 
 Тестовое задание Frontend junior в Mindbox
 Сделайте ToDo-приложение, позволяющее управлять текущим списком дел
@@ -14,6 +14,10 @@
 Проект должен запускаться командой npm i && npm run start
 Проект доступен на GitHub Pages/Vercel/etc.
 
-# Рабочий макет
+### Git
+
+https://github.com/consultapp/test-task-todos
+
+### Рабочий макет
 
 https://tubular-hamster-7a0163.netlify.app/
